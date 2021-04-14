@@ -1,0 +1,145 @@
+
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head >
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+   
+  <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"></script>
+ 
+  <script>
+    $(document).ready(function() {
+     
+    $('#booklist').dataTable({}); // dòng này để nhúng bảng biểu thành dạng bảng được phân trang
+         
+    } ); 
+  </script> 
+
+</head>
+
+
+
+
+<body>
+<head th:replace="common/header :: common-header">
+
+	<div th:replace="common/header :: navbar" />
+
+	<div class="container"style="font-size:17px">
+		<div class="row" style="margin-bottom: -100px">
+			<div class="col-xs-8">
+				<h2 class="section-headline">
+					<h2 class="section-headline">
+						<span th:text="${user}? ${#strings.toUpperCase(user.username)} : 'ALL Books'"></span>
+					</h2>
+				</h2>
+			</div>
+			<div class="col-xs-4">
+				<img src="/image/300.png" width="350px" class="img-responsive">
+			</div>
+		</div>
+		<hr
+			style="position: absolute; width: 100%; height: 6px; background-color: #333; z-index: -1; margin-top: -97px;">
+		<img class="img-responsive" src="/image/go.jpg"
+			style="width: 100%; height: 180px; position: absolute; z-index: -1">
+
+	<!--  end of container-->
+	<div class="row" style="margin-top: 180px;">
+	<div class="col-xs-2">
+		<h3>
+			<label for="category">Thể loại</label>
+		</h3>
+		<div class="list-group" id="category">
+			<a th:href="@{/bookshelf(category='all')}"
+				th:classappend="${activeAll}? 'active'" class="list-group-item">Tất cả</a>
+			<a th:href="@{/searchByCategory(category='Truyện cổ tích')}"
+				th:classappend="${activeManagement}? 'active'"
+				class="list-group-item">Truyện cổ tích</a> <a
+				th:href="@{/searchByCategory(category='Tiểu thuyết')}"
+				th:classappend="${activeFiction}? 'active'" class="list-group-item">Tiểu thuyết</a>
+			<a th:href="@{/searchByCategory(category='CNTT')}"
+				th:classappend="${activeEnginnering}? 'active'"
+				class="list-group-item">CNTT</a> 
+				<a
+				th:href="@{/searchByCategory(category='Phiêu lưu, Hài kịch, Kì ảo')}"
+				th:classappend="${activePrograming}? 'active'"
+				class="list-group-item">Phiêu lưu, Hài kịch, Kì ảo</a>
+				 <a
+				th:href="@{/searchByCategory(category='Ngôn Tình')}"
+				th:classappend="${activeArtLiterature}? 'active'"
+				class="list-group-item">Ngôn Tình </a>
+
+
+		</div>
+	</div>
+
+	<div class="col-xs-9 " >
+			<div th:if="${emptyList}">
+				<h5 style="font-style: italic">Rất tiếc, kết quả được tìm thấy. Thử cái gì khác hoặc thử lại sau</h5>
+			</div>
+
+			<table border="0" id="booklist">
+				<thead>
+					<tr >
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="book-item" data-th-each="book : ${bookList}">
+						<td>
+							<div th:if="${book != null}">
+								<div class="row" style="margin-bottom: 50px;">
+									<div class="col-xs-3" >
+										<a th:href="@{/bookDetail?id=}+${book.id}"><img class="img-responsive shelf-book" 
+											th:src="#{adminPath}+@{/image/book/}+${book.id}+'.png'"></a>
+									</div>
+									<div class="col-xs-9">
+									<a th:href="@{/bookDetail?id=}+${book.id}"><h3 th:text="${book.title}"></h3></a>
+									
+										Ngày xuất bản:<span th:text="${book.publicationDate}"></span>
+										<br/>
+										<strong>Tác giả: <span
+									
+											th:text="${book.author}"></span> </strong>
+													<br/>
+												<br/>
+											<span
+											th:text="${#strings.capitalize(book.format)}"> </span>:
+											<a th:href="@{/bookDetail?id=}+${book.id}"><span
+											th:text="${book.numberOfPages}"><span></span></span> <br/></a>
+											<a th:href="@{/bookDetail?id=}+${book.id}"><span
+											style="font-size: x-lager; color: red;"><h3>Giá ₫  <span
+											th:text="${#numbers.formatDecimal
+								(book.ourPrice, 0, 'COMMA', 3, 'POINT')}"></span> </span></h3></a>
+
+										<span style="text-decoration: line-through;"> Giá gốc ₫ <span
+											th:text="${#numbers.formatDecimal
+								(book.listPrice, 0, 'COMMA', 3, 'POINT')}"></span> </span>
+													<br/>
+															<br/>	
+										<p th:utext="${#strings.abbreviate(book.description,300)}"></p>
+									</div>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+
+			</table>
+<hr/>
+
+
+		</div>
+	</div>
+</div>
+
+<div th:replace="common/header :: footer">
+
+	
+</body>
+</html>

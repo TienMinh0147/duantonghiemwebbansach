@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+   <link rel="stylesheet" href="/css/bootstrap.min.css">
+      <!-- style css -->
+      <link rel="stylesheet" href="/css/style-template.css">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="/css/responsive.css">
+      <!-- fevicon -->
+      <link rel="icon" href="image/fevicon.png" type="image/gif" />
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="/css/jquery.mCustomScrollbar.min.css">
+      <!-- Tweaks for older IEs-->
+   
+  
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>  
+   </head>
+   <!-- body -->
+   <body class="main-layout Books-bg">
+      <!-- loader  -->
+      <div class="loader_bg">
+         <div class="loader"><img src="image/loading.gif" alt="#" /></div>
+      </div>
+      <!-- end loader -->
+      <!-- header -->
+     <head th:replace="common/header :: common-header">
+
+	<div th:replace="common/header :: navbar" />
+     
+     
+     
+      <!-- end header -->
+      <div class="about-bg">
+         <div class="container">
+            <div class="row">
+               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                  <div class="abouttitle">
+                     <h2>Danh mục</h2>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!--Books -->
+      <div class="Books">
+         <div class="container">
+            <div class="row">
+             <br/>
+            </div>
+            <div class="row box">
+               <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
+               <br/>
+                  <div class="book-box">
+                    
+                <a
+				th:href="@{/searchByCategory(category='Tiểu thuyết')}"
+				th:classappend="${activeFiction}? 'active'" > <figure><img src="image/tt.jpg" alt="img"/></figure>
+				Tiểu thuyết</a>
+                  </div>
+                  <br/>
+                   <div class="book-box">
+                     
+                  <a
+				th:href="@{/searchByCategory(category='Ngôn Tình')}"
+				th:classappend="${activeArtLiterature}? 'active'"
+				>
+				<figure><img src="image/nt.jpg" alt="img"/></figure>
+				Ngôn Tình </a>
+                 
+                  </div>
+                  
+               </div>
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                  <div class="book-box">
+                   
+                 <a th:href="@{/searchByCategory(category='CNTT')}"
+				th:classappend="${activeEnginnering}? 'active'"
+				>  <figure><img src="image/cntt.jpg" alt="img"/></figure>
+				CNTT</a> 
+                  </div>
+               </div>
+               
+               <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
+               <br/>
+                  <div class="book-box">
+                     
+                 <a
+				th:href="@{/searchByCategory(category='Phiêu lưu, Hài kịch, Kì ảo')}"
+				th:classappend="${activePrograming}? 'active'"
+				><figure><img src="image/pl.png" alt="img"/></figure>
+				Phiêu lưu, Hài kịch, Kì ảo</a>
+                  </div>
+                  <br/>
+                  <div class="book-box">
+                    
+                  <a th:href="@{/searchByCategory(category='Truyện cổ tích')}"
+				th:classappend="${activeManagement}? 'active'"
+				> <figure><img src="image/ct.jpg" alt="img"/></figure>
+				Truyện cổ tích</a>
+                  </div>
+                  
+               </div>
+             
+            </div>
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-12">
+                     <div class="read-more">
+                        <a href="#">Read More</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end Books -->
+      <!-- footer -->
+      <footer>
+         <div th:replace="common/header :: footer">
+        
+      </footer>
+      <!-- end footer -->
+      <!-- Javascript files-->
+      <script src="js/jquery.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
+      <script src="js/jquery-3.0.0.min.js"></script>
+      <script src="js/plugin.js"></script>
+      <!-- sidebar -->
+      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="js/custom.js"></script>
+   </body>
+</html>

@@ -1,0 +1,129 @@
+
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head th:replace="common/header :: common-header">
+<body>
+	<div th:replace="common/header :: navbar" />
+
+	<div class="container">
+		<div class="row" style="margin-bottom: -100px">
+			<div class="col-xs-8">
+				<h2 class="section-headline">
+					<h2 class="section-headline">
+						<span
+							th:text="${user}? ${#strings.toUpperCase(user.username)} : 'ALL Books'"></span>
+					</h2>
+				</h2>
+			</div>
+			<div class="col-xs-4">
+				<img src="/image/300.png" width="350px" class="img-responsive">
+			</div>
+		</div>
+		<hr
+			style="position: absolute; width: 100%; height: 6px; background-color: #333; z-index: -1; margin-top: -97px;">
+		<img class="img-responsive" src="/image/go.jpg"
+			style="width: 100%; height: 180px; position: absolute; z-index: -1">
+
+
+
+		<div class="row" style="margin-top: 10px">
+			<div class="col-xs-12" style="margin-top: 100px">
+				<div class="row">
+					<div class="col-xs-6 text-left">
+						<a class="btn btn-warning" th:href="@{/bookshelf}">Tiếp tục mua sắm</a>
+					</div>
+					<div class="col-xs-6 text-right">
+						<a class="btn btn-primary"
+							th:href="@{/checkout(id=${shoppingCart.id})}">Thủ tục thanh toán</a>
+
+					</div>
+					<br />
+					<div th:if="${notEnoughStock}" class="alert alert-warning">
+						Rất tiếc, một số sản phẩm không có đủ hàng. Vui lòng cập nhật
+					chất lượng sản phẩm.
+						</div>
+					<div th:if="${emptyCart}" class="alert alert-warning">Rất tiếc, giỏ hàng của bạn trống. 
+					Xem liệu bạn có thể tìm thấy thứ mình thích trong giá sách và thêm chúng vào giỏ hàng hay không.
+						</div>
+					<div class="row">
+						<div class="col-xs-8 center-block">
+							<h4 style="margin-left: 70px">Các sản phẩm</h4>
+						</div>
+						<div class="col-xs-2">
+							<h4 >Giá bán</h4>
+						</div>
+						<div class="col-xs-2">
+							<h4>Số lượng</h4>
+						</div>
+						</div>
+						<!--******* Display products in cart **********-->
+						<div class="row" th:each="cartItem : ${cartItemList}">
+							<form th:action="@{/shoppingCart/updateCartItem}" method="post">
+								<hr />
+								<div class="col-xs-2">
+									<a th:href="@{bookDetail(id=${cartItem.book.id})}"> <img
+									style="width:200px;"class="img-responsive shelf-book center-block"
+										th:src="#{adminPath}+@{/image/book/}+
+						${cartItem.book.id}+'.png'">
+									</a>
+									</div>
+									
+									<div class="col-xs-6">
+									<div class="center-block " >
+									<a th:href="@{/bookDetail?id=}+${cartItem.book.id}"><h4 th:text="${cartItem.book.title}"></h4></a>
+									<p th:if="${cartItem.book.inStockNumber&gt;10}"
+										style="color: green;">Trong kho</p>
+										
+									<p th:if="${cartItem.book.inStockNumber&lt;10 and cartItem.book.inStockNumber&gt;0}"
+										style="color: green;">
+										Chỉ có<span th:text="${cartItem.book.inStockNumber}"></span>Trong kho</p>
+											
+											
+									<p th:if="${cartItem.book.inStockNumber==0}" style="color: darkred;">Không có sản phẩm</p>
+									<a th:href="@{/shoppingCart/removeItem?id=}+${cartItem.id}">Xóa</a>
+
+								</div>
+								</div>
+
+								<div class="col-xs-2">
+									<h5 style="color: #db3208; font-size: large;">
+										₫<span
+											th:text="${#numbers.formatDecimal
+								(cartItem.book.ourPrice, 0, 'COMMA', 3, 'POINT')}"
+											th:style="${cartItem.book.inStockNumber}==0?'text-decoration: line-through' : ''"></span>
+									</h5>
+								</div>
+								<div class="col-xs-2">
+									<input hidden="hidden" name="id" th:value="${cartItem.id}">
+									<input th:id="${cartItem.id}" th:name="qty"
+										th:disabled="${cartItem.book.inStockNumber==0}"
+										class="form-control cartItemQty" th:value="${cartItem.qty}">
+									<button 
+										th:id="'update-item-'+ ${cartItem.id}" type="submit"
+										class="btn btn-warning btn-xs">Cập nhật</button> 
+										
+									
+								</div>
+							</form>
+						</div>
+						
+						<div class="row">
+						<hr/>
+						<h4 class="col-xs-12 text-right"><strong style="font-size: large;">Tổng giá
+						(<span th:text="${#lists.size(cartItemList)}"></span> mặt hàng):</strong><span style="color: #db3208; font-size: large;">₫<span th:text="${#numbers.formatDecimal(shoppingCart.grandTotal, 0, 'COMMA', 3, 'POINT')}"></span></span>
+						</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+	<div th:replace="common/header :: body-bottom-scripts">
+</body>
+</html>

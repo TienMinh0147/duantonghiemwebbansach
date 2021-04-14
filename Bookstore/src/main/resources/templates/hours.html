@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+     <link rel="stylesheet" href="/css/bootstrap.min.css">
+      <!-- style css -->
+      <link rel="stylesheet" href="/css/style-template.css">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="/css/responsive.css">
+      <!-- fevicon -->
+      <link rel="icon" href="image/fevicon.png" type="image/gif" />
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="/css/jquery.mCustomScrollbar.min.css">
+      <!-- Tweaks for older IEs-->
+   
+  
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+   <!-- body -->
+   <body class="main-layout">
+      <!-- loader  -->
+      <div class="loader_bg">
+         <div class="loader"><img src="image/loading.gif" alt="#" /></div>
+      </div>
+      <!-- end loader -->
+      <!-- header -->
+      <header>
+         <!-- header inner -->
+          <head th:replace="common/header :: common-header">
+
+	<div th:replace="common/header :: navbar" />
+      
+         <!-- end header inner -->
+      </header>
+      <!-- end header -->
+      <!-- about -->
+      <div class="about-bg">
+         <div class="container">
+            <div class="row">
+               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                  <div class="abouttitle">
+                     <h2>Giới thiệu</h2>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="about">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-10 offset-md-1">
+                  <div class="aboutheading">
+                     <span>adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</span>
+                  </div>
+               </div>
+            </div>
+            <div class="row border">
+               <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12">
+                  <div class="about-box">
+                     <p> consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+                     <a href="#">Read More</a>
+                  </div>
+               </div>
+               <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
+                  <div class="about-box">
+                     <figure><img src="image/about.png" alt="img" /></figure>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      </div>
+      <!-- end about -->
+      <!-- footer -->
+      <footer>
+       <div th:replace="common/header :: footer">
+      </footer>
+      <!-- end footer -->
+      <!-- Javascript files-->
+      <script src="js/jquery.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
+      <script src="js/jquery-3.0.0.min.js"></script>
+      <script src="js/plugin.js"></script>
+      <!-- sidebar -->
+      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="js/custom.js"></script>
+   </body>
+</html>

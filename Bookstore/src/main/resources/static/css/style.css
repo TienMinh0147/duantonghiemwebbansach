@@ -1,0 +1,137 @@
+body {
+  font-size: 20px;
+      background: #8caeae3d;
+}
+
+hr{
+	border: none;
+	height: 1px;
+	color: #333;
+	background-color: #333;
+	
+}
+.container{
+	width: 90%;
+	position: relative;
+	
+}
+.banner{
+	background-image: url("/image/777.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	
+	
+}
+
+.navbar {
+  margin-bottom: 0px;
+}
+
+.box{
+	border: 1px solid red;
+}
+.title-slide{
+	background-color: orange;
+}
+.home-headline{
+	font-family: 'Time New Roman, Times, serif';
+	font-size: 24px;
+	color: #fff;
+	margin: auto;
+	text-align: center;
+
+
+}
+.home-headline span{
+	background-color: #231F20;
+	padding: 5px 22px;
+}
+.style img{box-shadow:6px 7px 4px;
+}
+.section-headline{
+	font-family: 'Time New Roman, Times, serif';
+	font-size: 24px;
+	color: #fff;
+	margin: auto;
+	text-align: center;
+	margin-top: 144px;
+}
+.section-headline span{
+	background-color: #231F20;
+	padding: 5px 22px;
+}
+
+
+
+.copyright {
+    height: 50px;
+    background-color:#000000d6;
+}
+
+.copyright p {
+    text-align: left;
+    color: #FFF;
+    padding: 10px 0;
+    margin-bottom: 0px;
+}
+
+.heading7 {
+    font-size: 21px;
+    font-weight: 700;
+    
+    margin-bottom: 22px;
+}
+
+
+
+.bottom_ul {
+    list-style-type: none;
+    float: right;
+    margin-bottom: 0px;
+}
+
+.bottom_ul li {
+    float: left;
+    line-height: 40px;
+}
+
+.bottom_ul li:after {
+    content: "/";
+    color: #FFF;
+    margin-right: 8px;
+    margin-left: 8px;
+}
+
+.bottom_ul li a {
+    color: #FFF;
+    font-size: 18px;
+}
+footer {
+	color: white;
+    background-color: #81256c;
+    min-height: 250px;
+    font-family: 'Open Sans', sans-serif;
+}
+.footerleft {
+    margin-top: -35px;
+    padding: 0 154px;
+}
+.logofooter {
+    margin-bottom: -31px;
+    font-size: 25px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.footerleft p {
+   
+    font-size: 15px !important;
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 10px;
+}
+
+.footerleft p i {
+    width: 20px;
+    color: #999;
+}

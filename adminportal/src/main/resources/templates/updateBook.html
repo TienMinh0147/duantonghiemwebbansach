@@ -1,0 +1,235 @@
+
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head th:replace="common/header :: common-header">
+<body>
+	<div th:replace="common/header :: navbar" />
+
+	<div class="container">
+		
+		<form th:action="@{/book/updateBook}" method="post" enctype="multipart/form-data">
+				<fieldset>
+					<lenged class="center-block" style="font-size: 30px">Thông tin sách mới<span style="font-size:medium ;">* là một trường bắt buộc</span>
+					</lenged>
+					<hr/>
+					
+					<input hidden="hidden" name="id" th:value="${book.id}">
+					
+					<!-- title -->
+					<div class="form-group row">
+						<label class="col-md-2 col-form-label" for="title">Tiêu đề</label>
+						<div class="col-md-8">
+						 <input type="text" name="title"
+							class="form-control" id="title" th:value="${book.title}"
+							required="required" placeholder="Title"> <span
+							class="help-block">Tiêu đề của cuốn sách</span>
+							</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-md-2 control-label" for="author">* Tác giả</label>
+						<div class="col-md-8">
+						 <input type="text"
+							name="author" class="form-control" id="author"
+							th:value="${book.author}" required="required"
+							placeholder="Author"> <span class="help-block">Tác giả của cuốn sách</span>
+							</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-md-2 control-label" for="publisher">Nhà xuất bản</label>
+						<div class="col-md-8">
+						 <input type="text"
+							name="publisher" class="form-control" id="publisher"
+							th:value="${book.publisher}" placeholder="Publisher"> <span
+							class="help-block">Nhà xuất bản của cuốn sách</span>
+							</div>
+					</div>
+					<!-- publiction date -->
+					<div class="form-group row">
+						<label class="col-md-2 control-label" for="publicationDate">Ngày xuất bản</label>
+						<div class="col-md-8">
+						 <input
+							type="date" class="form-control" id="publicationDate" name="publicationDate"
+							th:value="${book.publicationDate}" placeholder="publication Date">
+						<span class="help-block">Ngày xuất bản của cuốn sách</span>
+						</div>
+					</div>
+					<!-- ngon ngu -->
+					<div class="form-group row">
+						<label class="col-md-2 control-label" for="language">Ngôn ngữ</label>
+						<div class="col-md-8">
+							<select th:value="${book.language}" id="language" name="language"
+								class="form-control">
+								<option value="english">English</option>
+								<option value="spanish">Spanish</option>
+								<option value="vietnam">Viet Nam</option>
+								<option value="japan">Japan</option>
+							</select>
+						</div>
+					</div>
+
+					<!-- san pham-->
+					<div class="form-group row">
+						<label class="col-xs-2 control-label" for="category">*
+							Thể loại</label>
+						<div class="col-md-8" style="margin-left: 122px;">
+							<select th:value="${book.category}" id="category" name="category"
+								class="form-control">
+								<option value=" " selected="selected" disabled="disabled">Xin vui lòng chọn một tùy chọn ...</option>
+								<option value="Truyện cổ tích"
+									th:selected="(${book.category}=='Management')">Truyện cổ tích</option>
+								<option value="Tiểu thuyết"
+									th:selected="(${book.category}=='Fiction')">Tiểu thuyết</option>
+								<option value="CNTT"
+									th:selected="(${book.category}=='Enginnering')">CNTT</option>
+								<option value="Phiêu lưu, Hài kịch, Kì ảo"
+									th:selected="(${book.category}=='Programming')">Phiêu lưu, Hài kịch, Kì ảo</option>
+								<option value="Ngôn Tình"
+									th:selected="(${book.category}=='Art &amp; Literature')">Ngôn Tình
+									</option>
+
+
+
+							</select>
+						</div>
+					</div>
+					<!-- pages -->
+					<div class="form-group row">
+						<label class="col-md-2 control-label" for="pageNumber">Trang</label>
+						<div class="col-md-8">
+						 <input type="number"
+							name="numberOfPages" class="form-control" id="pageNumber"
+							th:value="${book.numberOfPages}" placeholder="Page Number">
+						<span class="help-block">Số cuốn sách</span>
+						</div>
+					</div>
+
+					<!-- format -->
+					<div class="form-group row" >
+						<label class="col-md-2 control-label" for="format">Định dạng</label>
+						<div class="col-md-8">
+							<select th:value="${book.format}" id="format" name="format"
+								class="form-control">
+								<option value="paperback">Bìa mềm</option>
+								<option value="hardcover">Bìa cứng</option>
+							</select>
+						</div>
+					</div>
+
+					<!-- isbn -->
+					<div class="form-group row">
+						<label class="col-md-2 control-label" for="isbn">ISBN</label>
+						<div class="col-md-8">
+						 <input type="text" name="isbn"
+							class="form-control" id="isbn" th:value="${book.isbn}"
+							placeholder="ISBN"> <span class="help-block">ISBN
+							của cuốn sách</span>
+							</div>
+					</div>
+
+
+					<!-- shipping weight -->
+					<div class="form-group row">
+						<label class="col-md-2 control-label" for="shippingWeight">Trọng lượng vận chuyển của sách</label>
+						<div class="col-xs-8"style="margin-left: 16px;">
+							<div class="input-group">
+								<input th:value="${book.shippingWeight}" type="number"step="0.01"
+									name="shippingWeight" class="form-control" id="shippingWeight"
+									placeholder="Shipping Weight"> <span
+									class="input-group-addon">Ounces</span>
+
+							</div>
+							<span class="help-block">Trọng lượng vận chuyển của sách</span>
+						</div>
+					</div>
+
+					<!-- List price -->
+					<div class="form-group row">
+						<label class="col-md-2 control-label" for="listPrice">List
+							Price</label>
+						<div class="col-md-8">
+							<div class="input-group">
+								<span class="input-group-addon">đ</span> <input
+									th:value="${book.listPrice}" type="number" name="listPrice" step="0.01"
+									class="form-control" id="listPrice" placeholder="List Price">
+
+
+							</div>
+							<span class="help-block">Giá niêm yết của cuốn sách</span>
+						</div>
+					</div>
+
+					<!-- our price -->
+					<div class="form-group row">
+						<label class="col-md-2 control-label" for="ourPrice">Our
+							Price</label>
+						<div class="col-md-8">
+							<div class="input-group">
+								<span class="input-group-addon">đ</span> <input
+									th:value="${book.ourPrice}" type="number" name="ourPrice"step="0.01"
+									class="form-control" id="ourPrice" placeholder="Our Price">
+
+
+							</div>
+							<span class="help-block">Giá của cuốn sách</span>
+						</div>
+					</div>
+
+					<!-- in stock number-->
+					<div class="form-group row">
+						<label class="col-md-2 control-label" for="inStockNumber">Số lượng trong kho</label>
+						<div class="col-md-8">
+
+							<input th:value="${book.inStockNumber}" type="number"
+								name="inStockNumber" class="form-control" id="inStockNumber"
+								placeholder="Number if in-stock copies"> <span
+								class="help-block">Số nếu bản sao còn hàng</span>
+						</div>
+					</div>
+
+					<!-- status of book-->
+					<div class="form-group row">
+						<label class="col-md-2 control-label" for="status">Trạng thái</label>
+						<div class="col-md-8">
+
+							<label> <input value="true" type="radio" name="active" checked="checked"
+								>Hoạt động
+							</label> <label> <input value="false" type="radio" name="active"
+								>Không hoạt động
+							</label> <span class="help-block">Sách có hoạt động hay không</span>
+						</div>
+					</div>
+					<!-- description -->
+					<div class="form-group row">
+						<label class="col-md-2 control-label" for="description">Sự miêu tả</label>
+						<div class="col-md-8">
+						<textarea name="description" row="5" class="form-control" id="description" th:text="${book.description}"
+							 th:value="${book.description}"
+							placeholder="Description"/></textarea>
+							 <span class="help-block">Mô tả của cuốn sách</span>
+					</div>
+					</div>
+					<!-- upload image -->
+					<div class="form-group row">
+						<div class="col-md-2">
+							<label for="bookImage">Tải lên hình ảnh sách</label>
+						</div>
+						<div class="col-md-8">
+							<input id="bookImage" type="file" name="bookImage"
+								th:value="${book.bookImage}">
+						</div>
+					</div>
+					<div class="form-group row">
+					<div class="col-md-2"></div>
+					<div class="col-md-8">
+						<button type="submit" class="btn btn-success">Cập nhật sách</button>
+						<a class="btn btn-danger" th:href="@{/book/bookInfo(id=${book.id})}">Canner</a>
+					</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+		<div th:replace="common/header :: body-bottom-scripts">
+</body>
+</html>
